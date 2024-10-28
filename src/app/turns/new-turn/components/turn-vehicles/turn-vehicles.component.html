@@ -1,16 +1,18 @@
-<h3>Elegi tu vehiculo</h3>
-
-<div class="row justify-content-center align-items-center g-2">
-  <div class="col">
-    <!-- El *ngFor debe aplicarse en el botón -->
-    <div class="list-group">
-      <button 
-        *ngFor="let v of vehicles" 
-        type="button"  
-        class="list-group-item list-group-item-action"
-        (click)="onClick(v.id)">
-        {{ v.modelo.descripcion }}
-      </button>
-    </div>
+<div class="flex align-items-start flex-column lg:justify-content-between lg:flex-row">
+  <div>
+      <div class="font-medium text-3xl text-900">Selecciona un vehiculo</div>
   </div>
+</div>
+
+<div class="card mt-3">
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <p-listbox 
+      [options]="vehicles" 
+      formControlName="selectedVehicle"  
+      optionLabel="modelo.descripcion" 
+      [listStyle]="{'max-height': '220px'}" />
+      <div class="mt-3">
+        <p-button label="Continuar" class="" styleClass="w-full" type="submit" [disabled]="formulario.value.selectedVehicle?false:true"/>
+      </div>
+  </form>  
 </div>

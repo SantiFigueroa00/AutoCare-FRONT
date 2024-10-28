@@ -1,39 +1,40 @@
-<h4>Seleccionar Fecha</h4>
-
-<mat-form-field class="example-full-width">
-    <mat-label>Fecha</mat-label>
-    <input matInput [min]="minDate" [matDatepickerFilter]="myFilter" [matDatepicker]="picker" 
-    [(ngModel)]="selectedDate"
-    (dateChange)="onDateChange()">
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
-
-<h4 class="mt-3">Seleccionar Horario</h4>
-<div class="row justify-content-center align-items-center g-2 w-25">
-    <div class="col">
-      <!-- El *ngFor debe aplicarse en el botón -->
-      <div class="list-group">
-        <button 
-          *ngFor="let s of schedulesDisp"
-          type="button"  
-          class="list-group-item list-group-item-action"
-          (click)="onClick(s)">
-          {{s}}
-        </button>
-      </div>
-    </div>
+<div class="flex align-items-start flex-column lg:justify-content-between lg:flex-row">
+  <div>
+    <div class="font-medium text-3xl text-900">Elegir Turno</div>
+    
   </div>
+</div>
 
-<div class="d-grid gap-2 mt-2">
-<button
-    type="button"
-    name=""
-    id=""
-    class="btn btn-primary"
-    (click)="onConfirm()"
->
-    Confirmar Turno
-</button>
+<div class="text-700 mt-3">
+  <span>Elegí Fecha y hora para tu tuno</span>
+</div>
+
+<div class="card my-3">
+  <p-calendar 
+      class="w-15rem" 
+      [(ngModel)]="selectedDate" 
+      [inline]="true" 
+      [showWeek]="true" 
+      [minDate]="minDate"
+      (ngModelChange)="onDateChange()"/>
+</div>
+<hr>
+<div class="card" *ngIf="schedulesDisp.length?false:true">
+  <p-messages 
+      [(value)]="messages!" 
+      [enableService]="false" 
+      [closable]="false" />
+</div>
+<div class="card flex flex-column align-items-center">
+  <!-- Iteramos sobre cada grupo de horarios -->
+  <div *ngFor="let group of groupedSchedulesDisp" class="mb-3">
+    <p-selectButton 
+        [options]="group" 
+        [(ngModel)]="selectedHour" >
+    </p-selectButton>
+  </div>
+</div>
+
+<div class="mt-3">
+  <p-button label="Continuar" class="" styleClass="w-full" (onClick)="onConfirm()" [disabled]="selectedHour?false:true" />
 </div>

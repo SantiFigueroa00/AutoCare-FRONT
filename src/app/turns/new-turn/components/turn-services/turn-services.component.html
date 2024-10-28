@@ -1,44 +1,28 @@
-<h3>Elegi tu Servicio</h3>
-
-<div class="row justify-content-center align-items-center g-2">
-  <div class="col">
-    <!-- El *ngFor debe aplicarse en el botón -->
-    <div class="list-group">
-      <button 
-        *ngFor="let t of typeServices" 
-        type="button"  
-        class="list-group-item list-group-item-action"
-        (click)="onClick(t)">
-        {{ t.descripcion }}
-      </button>
-    </div>
+<div class="flex align-items-start flex-column lg:justify-content-between lg:flex-row">
+  <div>
+    <div class="font-medium text-3xl text-900">Arma tu servicio</div>
+    
   </div>
 </div>
 
-<h3 class="mt-2">Elegi un Combo</h3>
-<div class="row justify-content-center align-items-center g-2">
-    <div class="col">
-      <div class="list-group">
-        <button 
-          *ngFor="let c of combos" 
-          type="button"  
-          class="list-group-item list-group-item-action"
-          (click)="onClick(c)">
-          {{c.nombre}}
-        </button>
-      </div>
-    </div>
+<div class="text-700 mt-3">
+    <span>Tipos de Servicio</span>
 </div>
 
-<div class="d-grid gap-2 mt-2">
-  <button
-    type="button"
-    name=""
-    id=""
-    class="btn btn-primary"
-    (click)="onContinue()"
-  >
-    Continuar
-  </button>
+<div class="card mt-3">
+  <p-listbox [options]="typeServices" [(ngModel)]="selectedTypeServices" optionLabel="descripcion"
+    [style]="{'width':'20rem'}" [multiple]="true" [metaKeySelection]="false" [listStyle]="{'max-height': '220px'}" />
 </div>
 
+<div class="text-700 mt-3">
+  <span>Combos de Servicios</span>
+</div>
+
+<div class="card mt-3">
+  <p-listbox [options]="combos" [(ngModel)]="selectedCombos" optionLabel="descripcion" [style]="{'width':'20rem'}"
+    [multiple]="true" [metaKeySelection]="false" [listStyle]="{'max-height': '220px'}" />
+</div>
+
+<div class="mt-3">
+  <p-button label="Continuar" class="" styleClass="w-full" (onClick)="onClick()" [disabled]="selectedTypeServices.length||selectedCombos.length?false:true"/>
+</div>

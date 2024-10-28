@@ -9,7 +9,7 @@ import { Login } from '../models/login.interface';
 export class UsersService {
 
   private httpClient = inject(HttpClient);
-  private baseUrl = 'http://190.226.1.169:5198/auth';
+  private baseUrl = 'http://190.226.1.141:5198';
 
   constructor() {}
 

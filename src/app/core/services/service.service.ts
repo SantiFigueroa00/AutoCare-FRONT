@@ -13,7 +13,7 @@ export class ServiceService {
   
   
   private httpClient = inject(HttpClient);
-  private baseUrl = 'http://190.226.1.169:5198';
+  private baseUrl = 'http://190.226.1.141:5198';
 
   private _service: BehaviorSubject<Service | null> = new BehaviorSubject<Service | null>(null);
 

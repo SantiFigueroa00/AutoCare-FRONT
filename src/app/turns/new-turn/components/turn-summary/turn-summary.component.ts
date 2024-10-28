@@ -2,13 +2,16 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ServiceService } from '../../../../core/services/service.service';
 import { ComboLine, Service, ServiceLine } from '../../../../core/models/service.interface';
 import { CommonModule } from '@angular/common';
-import { typeService } from '../../../../core/models/typeService.interface';
-import { comboService } from '../../../../core/models/comboService.interface';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { Turn } from '../../../../core/models/turn.interface';
+import { TurnsService } from '../../../../core/services/turns.service';
 
 @Component({
   selector: 'app-turn-summary',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,CardModule, ButtonModule,TableModule],
   templateUrl: './turn-summary.component.html',
   styleUrl: './turn-summary.component.css'
 })
@@ -16,6 +19,8 @@ export class TurnSummaryComponent implements OnInit {
 
 
   service: Service | undefined;
+  turnService=inject(TurnsService)
+  turnSummary!: Turn;
 
   constructor(private servService : ServiceService){}
 
@@ -37,6 +42,7 @@ export class TurnSummaryComponent implements OnInit {
         });
       }
     });
+    this.turnSummary=this.turnService.turnSummary;
   }
 
   onDelete(line: ServiceLine | ComboLine) {
