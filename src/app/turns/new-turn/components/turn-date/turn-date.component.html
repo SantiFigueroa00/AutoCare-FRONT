@@ -1,0 +1,39 @@
+<h4>Seleccionar Fecha</h4>
+
+<mat-form-field class="example-full-width">
+    <mat-label>Fecha</mat-label>
+    <input matInput [min]="minDate" [matDatepickerFilter]="myFilter" [matDatepicker]="picker" 
+    [(ngModel)]="selectedDate"
+    (dateChange)="onDateChange()">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<h4 class="mt-3">Seleccionar Horario</h4>
+<div class="row justify-content-center align-items-center g-2 w-25">
+    <div class="col">
+      <!-- El *ngFor debe aplicarse en el botón -->
+      <div class="list-group">
+        <button 
+          *ngFor="let s of schedulesDisp"
+          type="button"  
+          class="list-group-item list-group-item-action"
+          (click)="onClick(s)">
+          {{s}}
+        </button>
+      </div>
+    </div>
+  </div>
+
+<div class="d-grid gap-2 mt-2">
+<button
+    type="button"
+    name=""
+    id=""
+    class="btn btn-primary"
+    (click)="onConfirm()"
+>
+    Confirmar Turno
+</button>
+</div>

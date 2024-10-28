@@ -1,0 +1,30 @@
+<p>Formulario para login de usuario</p>
+
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+        <label for="" class="form-label">Email</label>
+        <input
+            type="email"
+            class="form-control"
+            formControlName="email"
+            aria-describedby="emailHelpId"
+            placeholder="abc@mail.com"
+        />
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Password</label>
+        <input
+            type="password"
+            class="form-control"
+            formControlName="clave"
+            placeholder=""
+        />
+    </div>
+    <button
+        type="submit"
+        class="btn btn-primary"
+    >
+        Submit
+    </button>
+    
+</form>

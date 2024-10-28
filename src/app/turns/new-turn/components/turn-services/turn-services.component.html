@@ -1,0 +1,44 @@
+<h3>Elegi tu Servicio</h3>
+
+<div class="row justify-content-center align-items-center g-2">
+  <div class="col">
+    <!-- El *ngFor debe aplicarse en el botón -->
+    <div class="list-group">
+      <button 
+        *ngFor="let t of typeServices" 
+        type="button"  
+        class="list-group-item list-group-item-action"
+        (click)="onClick(t)">
+        {{ t.descripcion }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<h3 class="mt-2">Elegi un Combo</h3>
+<div class="row justify-content-center align-items-center g-2">
+    <div class="col">
+      <div class="list-group">
+        <button 
+          *ngFor="let c of combos" 
+          type="button"  
+          class="list-group-item list-group-item-action"
+          (click)="onClick(c)">
+          {{c.nombre}}
+        </button>
+      </div>
+    </div>
+</div>
+
+<div class="d-grid gap-2 mt-2">
+  <button
+    type="button"
+    name=""
+    id=""
+    class="btn btn-primary"
+    (click)="onContinue()"
+  >
+    Continuar
+  </button>
+</div>
+

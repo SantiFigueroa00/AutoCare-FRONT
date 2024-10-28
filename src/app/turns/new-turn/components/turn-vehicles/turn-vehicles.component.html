@@ -1,0 +1,16 @@
+<h3>Elegi tu vehiculo</h3>
+
+<div class="row justify-content-center align-items-center g-2">
+  <div class="col">
+    <!-- El *ngFor debe aplicarse en el botón -->
+    <div class="list-group">
+      <button 
+        *ngFor="let v of vehicles" 
+        type="button"  
+        class="list-group-item list-group-item-action"
+        (click)="onClick(v.id)">
+        {{ v.modelo.descripcion }}
+      </button>
+    </div>
+  </div>
+</div>

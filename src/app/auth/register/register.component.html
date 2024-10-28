@@ -1,0 +1,51 @@
+<p>Formulario de registro de usuarios</p>
+
+<form [formGroup]="formulario" (ngSubmit)="onSubmit($event)">
+    <div class="mb-3">
+        <label for="" class="form-label">Name</label>
+        <input
+            type="text"
+            class="form-control"
+            formControlName="nombre"
+            aria-describedby="helpId"
+            placeholder="Santiago"
+        />
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Surname</label>
+        <input
+            type="text"
+            class="form-control"
+            formControlName="apellido"
+            aria-describedby="helpId"
+            placeholder="Figueroa"
+        />
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Email</label>
+        <input
+            type="email"
+            class="form-control"
+            formControlName="email"
+            aria-describedby="emailHelpId"
+            placeholder="abc@mail.com"
+        />
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Password</label>
+        <input
+            type="password"
+            class="form-control"
+            formControlName="clave"
+            placeholder=""
+        />
+    </div>
+    <button
+        type="submit"
+        class="btn btn-primary"
+    >
+        submit
+    </button>
+    
+    
+</form>

@@ -1,0 +1,81 @@
+<p>turn-summary works!</p>
+
+<div class="card text-start">
+    <img class="card-img-top" src="holder.js/100px180/" alt="Title" />
+    <div class="card-body">
+        <h4 class="card-title">{{service?.cliente?.nombre}}</h4>
+        <p class="card-text">{{service?.vehiculo?.modelo?.descripcion}}</p>
+
+        <div
+            class="table-responsive"
+        >
+            <table
+                class="table table-striped table-hover table-borderless table-primary align-middle"
+            >
+                <thead class="table-light">
+                    <caption>
+                        Tipos de Servicios
+                    </caption>
+                    <tr>
+                        <th>N°</th>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr
+                        class="table-primary"
+                        *ngFor="let line of service?.lineasDeServicio; let indice = index"
+                    >
+                        <td scope="row">{{indice}}</td>
+                        <td>{{line.tipoDeServicio.nombre}}</td>
+                        <td>{{line.tipoDeServicio.descripcion}}</td>
+                        <td>
+                            <button class="dropdown-item" type="button" data-bs-toggle="modal"
+                                data-bs-target="#modalCenter" (click)="onDelete(line)"><i
+                                    class="bx bx-trash me-1"></i> Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div
+            class="table-responsive"
+        >
+            <table
+                class="table table-striped table-hover table-borderless table-primary align-middle"
+            >
+                <thead class="table-light">
+                    <caption>
+                        Combos
+                    </caption>
+                    <tr>
+                        <th>N°</th>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr
+                        class="table-primary"
+                        *ngFor="let c of service?.lineasDeCombo; let indice = index"
+                    >
+                        <td scope="row">{{indice}}</td>
+                        <td>{{c.combo.nombre}}</td>
+                        <td>{{c.combo.descripcion}}</td>
+                        <td>
+                            <button class="dropdown-item" type="button" data-bs-toggle="modal"
+                                data-bs-target="#modalCenter" (click)="onDelete(c)"><i
+                                    class="bx bx-trash me-1"></i> Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
